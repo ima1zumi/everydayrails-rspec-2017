@@ -14,8 +14,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.6.0'
-  gem 'factory_girl_rails', '~> 4.8.0'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
@@ -34,7 +34,7 @@ group :test do
   gem 'selenium-webdriver'
   # Or use poltergeist and PhantomJS as an alternative to Selenium/Chrome
   # gem 'poltergeist', '~> 1.15.0'
-  gem 'launchy', '~> 2.4.3'
+  gem 'launchy'
   gem 'shoulda-matchers',
     git: 'https://github.com/thoughtbot/shoulda-matchers.git',
     branch: 'rails-5'

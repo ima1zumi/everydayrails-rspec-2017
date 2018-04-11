@@ -11,7 +11,7 @@ describe 'Projects API', type: :request do
       user_token: user.authentication_token
     }
 
-    expect(response).to have_http_status(:success)
+    expect(response).to be_successful
     json = JSON.parse(response.body)
     expect(json.length).to eq 1
     project_id = json[0]["id"]
@@ -21,7 +21,7 @@ describe 'Projects API', type: :request do
       user_token: user.authentication_token
     }
 
-    expect(response).to have_http_status(:success)
+    expect(response).to be_successful
     json = JSON.parse(response.body)
     expect(json["name"]).to eq "Second Sample Project"
     # Etc.
@@ -42,6 +42,6 @@ describe 'Projects API', type: :request do
       }
     }.to change(user.projects, :count).by(1)
 
-    expect(response).to have_http_status(:success)
+    expect(response).to be_successful
   end
 end
