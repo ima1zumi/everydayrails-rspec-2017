@@ -52,6 +52,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    archive-zip (0.11.0)
+      io-like (~> 0.3.0)
     arel (9.0.0)
     autoprefixer-rails (8.2.0)
       execjs
@@ -77,6 +79,9 @@ GEM
       xpath (~> 3.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.2.0)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     climate_control (0.2.0)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -112,6 +117,7 @@ GEM
     hashdiff (0.3.7)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
+    io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -280,6 +286,7 @@ DEPENDENCIES
   bundle_outdated_formatter
   byebug
   capybara (>= 2.15, < 4.0)
+  chromedriver-helper
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails
@@ -311,4 +318,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
