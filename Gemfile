@@ -15,7 +15,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8.0'
+  gem 'rspec-rails'
   gem 'factory_bot_rails', '~> 4.10.0'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -30,15 +30,13 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 2.15.4'
+  gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
   # Or use poltergeist and PhantomJS as an alternative to Selenium/Chrome
   # gem 'poltergeist', '~> 1.15.0'
   gem 'launchy', '~> 2.4.3'
-  gem 'shoulda-matchers',
-    git: 'https://github.com/thoughtbot/shoulda-matchers.git',
-    branch: 'rails-5'
+  gem 'shoulda-matchers'
   gem 'vcr'
   gem 'webmock'
 end
