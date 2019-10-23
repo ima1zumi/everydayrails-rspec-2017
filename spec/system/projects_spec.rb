@@ -1,44 +1,54 @@
 require 'rails_helper'
 
 RSpec.describe "Projects", type: :system do
-  scenario "user creates a new project" do
-    user = FactoryBot.create(:user)
-    # using our customer login helper:
-    # sign_in_as user
-    # or the one provided by Devise:
-    sign_in user
+  describe "project create" do
+    let(:user) { FactoryBot.create(:user) }
+    let(:name){ user.name }
 
-    visit root_path
+    before do
+      visit root_path
+      click_link "Sign in"
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_button "Log in"
+    end
 
-    expect {
-      click_link "New Project"
-      fill_in "Name", with: "Test Project"
-      fill_in "Description", with: "Trying out Capybara"
-      click_button "Create Project"
+    subject(:new_project) {
+      -> {
+        click_link "New Project"
+        fill_in "Name", with: project_name
+        fill_in "Description", with: project_description
+        click_button "Create Project"
 
-      aggregate_failures do
-        expect(page).to have_content "Project was successfully created"
-        expect(page).to have_content "Test Project"
-        expect(page).to have_content "Owner: #{user.name}"
-      end
-    }.to change(user.projects, :count).by(1)
-  end
+        # MEMO: click_button とはまだ処理が完了していない可能性がある
+        #       そこで以下のようなテストを実行することで「次のページがレンダリングされている」ことを保証する
+        expect(page).to have_content have_content_notice
+      }
+    }
 
-  scenario "user completes a project" do
-    user = FactoryBot.create(:user)
-    project = FactoryBot.create(:project, owner: user)
-    sign_in user
+    context "with project name and description" do
+      let(:have_content_notice) { "Project was successfully created" }
+      let(:project_name) { "tama.rb" }
+      let(:project_description) { "omotesando" }
 
-    visit project_path(project)
+      it { is_expected.to change(user.projects, :count).by(1) }
+      it { is_expected.to change { page.html }.to include project_name }
+    end
 
-    expect(page).to_not have_content "Completed"
+    context "with empty project name" do
+      let(:have_content_notice) { "Name can't be blank" }
+      let(:project_name) { "" }
+      let(:project_description) { "omotesando" }
 
-    click_button "Complete"
+      it { is_expected.not_to change(user.projects, :count) }
+    end
 
-    expect(project.reload.completed?).to be true
-    expect(page).to \
-      have_content "Congratulations, this project is complete!"
-    expect(page).to have_content "Completed"
-    expect(page).to_not have_button "Complete"
+    context "with empty project description" do
+      let(:have_content_notice) { "Project was successfully created" }
+      let(:project_name) { "tama.rb" }
+      let(:project_description) { "" }
+
+      it { is_expected.to change(user.projects, :count).by(1) }
+    end
   end
 end
