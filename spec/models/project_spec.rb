@@ -24,4 +24,20 @@ RSpec.describe Project, type: :model do
     project = FactoryBot.create(:project, :with_notes)
     expect(project.notes.length).to eq 5
   end
+
+  describe 'validation' do
+    let(:project) { FactoryBot.build(:project) }
+    context 'with empty name' do
+      it 'is invalid' do
+        project.name = ''
+        expect(project).to be_invalid
+      end
+    end
+    context 'with empty description' do
+      it 'is valid' do
+        project.description = ''
+        expect(project).to be_valid
+      end
+    end
+  end
 end
