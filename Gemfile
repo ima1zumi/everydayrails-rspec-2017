@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
-gem 'rails', '6.0.0'
+gem 'rails', '6.0.3.2'
 gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5'
@@ -14,7 +14,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
-  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
