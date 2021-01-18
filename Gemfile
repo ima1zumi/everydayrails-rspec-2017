@@ -3,15 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
-gem 'rails', '6.0.3.2'
+gem 'rails', '~> 6.1.1'
 gem 'sqlite3', '~> 1.4'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5'
+gem 'puma', '~> 5.0'
+gem 'sass-rails', '~> 6'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   gem 'rspec-rails'
@@ -20,17 +20,17 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 4.1.0'
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'listen', '~> 3.3'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker', require: false # for sample data in development
   gem 'spring-commands-rspec'
   gem 'bundle_outdated_formatter'
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   # Or use poltergeist and PhantomJS as an alternative to Selenium/Chrome
