@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.0'
 
 gem 'rails', '~> 6.1.1'
 gem 'sqlite3', '~> 1.4'
@@ -48,3 +48,4 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'paperclip'
 gem 'geocoder'
+gem 'webrick'
